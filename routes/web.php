@@ -15,7 +15,7 @@ Route::get('/jobs', function () {
         'Systems Analyst',
     ];
 
-    return view('jobs.index', compact('title'));
+    return view('jobs.index', compact('title', 'jobs'));
 })->name('jobs');
 
 Route::get('/jobs/create', function () {
