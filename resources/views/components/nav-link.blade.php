@@ -1,0 +1,15 @@
+@props([
+    'url' => '/',
+    'icon' => null,
+])
+
+@php
+    $active = $url == '/' ? request()->is($url) : request()->is(substr($url, 1));
+@endphp
+
+<a href="{{url($url)}}" class="text-white hover:underline py-2 {{$active ? 'text-yellow-500 font-bold' : ''}}">
+    @if ($icon)
+        <i class="fa fa-{{$icon}} mr-1"></i>
+    @endif
+    {{$slot}}
+</a>
