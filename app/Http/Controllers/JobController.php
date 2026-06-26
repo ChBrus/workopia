@@ -38,9 +38,10 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): String
+    public function show(Job $job): View
     {
-        return "Show";
+        return view('jobs.show')
+            ->with('job', $job);
     }
 
     /**
