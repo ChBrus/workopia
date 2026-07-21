@@ -148,7 +148,7 @@
                 id="company_website"
                 name="company_website"
                 label="Company Website"
-                type="text"
+                type="url"
                 placeholder="Enter Company Website"
             />
 
