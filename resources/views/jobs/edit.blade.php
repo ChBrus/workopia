@@ -1,17 +1,18 @@
 <x-layout>
-    <x-slot name="title">Create Job</x-slot>
+    <x-slot name="title">Edit Job Listing</x-slot>
     <div
         class="bg-white mx-auto p-8 rounded-lg shadow-md w-full md:max-w-3xl"
     >
         <h2 class="text-4xl text-center font-bold mb-4">
-            Create Job Listing
+            Edit Job Listing
         </h2>
         <form
             method="POST"
-            action="{{ route('jobs.store') }}"
+            action="{{ route('jobs.update', $job->id) }}"
             enctype="multipart/form-data"
         >
             @csrf
+            @method('PUT')
             <h2
                 class="text-2xl font-bold mb-6 text-center text-gray-500"
             >
@@ -23,6 +24,7 @@
                 name="title"
                 label="Job Title"
                 placeholder="Software Engineer"
+                :value="old('title', $job->title)"
             />
 
             <x-inputs.text-area
@@ -30,6 +32,7 @@
                 name="description"
                 label="Job Description"
                 placeholder="We are seeking a skilled and motivated Software Developer..."
+                :value="old('description', $job->description)"
             />
 
             <x-inputs.text
@@ -38,6 +41,7 @@
                 label="Annual Salary"
                 type="number"
                 placeholder="90000"
+                :value="old('salary', $job->salary)"
             />
 
             <x-inputs.text-area
@@ -46,6 +50,7 @@
                 label="Requirements"
                 placeholder="Bachelor's degree in Computer Science"
                 rows="3"
+                :value="old('requirements', $job->requirements)"
             />
 
             <x-inputs.text-area
@@ -54,6 +59,7 @@
                 label="Benefits"
                 placeholder="Health insurance, 401k, paid time off"
                 rows="3"
+                :value="old('benefits', $job->benefits)"
             />
 
             <x-inputs.text
@@ -62,13 +68,14 @@
                 label="Tags (comma-separated)"
                 type="text"
                 placeholder="development,coding,java,python"
+                :value="old('tags', $job->tags)"
             />
 
             <x-inputs.select
                 id="job_type"
                 name="job_type"
                 label="Job Type"
-                value="{{ old('job_type') }}"
+                :value="old('job_type', $job->job_type)"
                 :options="[
                     'Full-Time' => 'Full-Time',
                     'Part-Time' => 'Part-Time',
@@ -84,7 +91,7 @@
                 id="remote"
                 name="remote"
                 label="Remote"
-                value="{{ old('remote') }}"
+                :value="old('remote', $job->remote)"
                 :options="[
                     0 => 'No',
                     1 => 'Yes',
@@ -97,6 +104,7 @@
                 label="Address"
                 type="text"
                 placeholder="123 Main St"
+                :value="old('address', $job->address)"
             />
 
             <x-inputs.text
@@ -105,6 +113,7 @@
                 label="City"
                 type="text"
                 placeholder="Albany"
+                :value="old('city', $job->city)"
             />
 
             <x-inputs.text
@@ -113,6 +122,7 @@
                 label="State"
                 type="text"
                 placeholder="NY"
+                :value="old('state', $job->state)"
             />
 
             <x-inputs.text
@@ -121,6 +131,7 @@
                 label="ZIP Code"
                 type="text"
                 placeholder="12201"
+                :value="old('zipcode', $job->zipcode)"
             />
 
             <h2
@@ -135,6 +146,7 @@
                 label="Company Name"
                 type="text"
                 placeholder="Enter Company Name"
+                :value="old('company_name', $job->company_name)"
             />
 
             <x-inputs.text-area
@@ -142,6 +154,7 @@
                 name="company_description"
                 label="Company Description"
                 placeholder="Company Description"
+                :value="old('company_description', $job->company_description)"
             />
 
             <x-inputs.text
@@ -150,6 +163,7 @@
                 label="Company Website"
                 type="url"
                 placeholder="Enter Company Website"
+                :value="old('company_website', $job->company_website)"
             />
 
             <x-inputs.text
@@ -158,6 +172,7 @@
                 label="Contact Phone"
                 type="text"
                 placeholder="Enter Contact Phone"
+                :value="old('contact_phone', $job->contact_phone)"
             />
 
             <x-inputs.text
@@ -166,12 +181,14 @@
                 label="Contact Email"
                 type="email"
                 placeholder="Enter Contact Email"
+                :value="old('contact_email', $job->contact_email)"
             />
 
             <x-inputs.file
                 id="company_logo"
                 name="company_logo"
                 label="Company Logo"
+                :value="old('company_logo', $job->company_logo)"
             />
 
             <button
