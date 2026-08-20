@@ -138,9 +138,6 @@ class JobController extends Controller
             ->route('jobs.index')
             ->with('success', 'Job Listing updated successfully!');
     }
-    {
-        return "Update";
-    }
 
     /**
      * Remove the specified resource from storage.
