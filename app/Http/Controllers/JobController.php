@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Storage;
 class JobController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @desc Show all job listings
+     * @route GET /jobs
+     * @return \Illuminate\View\View
      */
     public function index(): View
     {
@@ -22,7 +24,9 @@ class JobController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @desc Show create job form
+     * @route GET /jobs/create
+     * @return \Illuminate\View\View
      */
     public function create(): View
     {
@@ -30,7 +34,9 @@ class JobController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @desc Save job to database
+     * @route POST /jobs
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request): RedirectResponse
     {
@@ -76,7 +82,9 @@ class JobController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @desc Display a single job listing
+     * @route GET /jobs/{$id}
+     * @return \Illuminate\View\View
      */
     public function show(Job $job): View
     {
@@ -85,7 +93,9 @@ class JobController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @desc Show edit job form
+     * @route GET /jobs/{$id}/edit
+     * @return \Illuminate\View\View
      */
     public function edit(Job $job): View
     {
@@ -94,7 +104,9 @@ class JobController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @desc Update job listing
+     * @route PUT /jobs/{$id}
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Job $job): RedirectResponse
     {
@@ -140,7 +152,9 @@ class JobController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @desc Delete a job listing
+     * @route DELETE /jobs/{$id}
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Job $job): RedirectResponse
     {

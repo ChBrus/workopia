@@ -8,10 +8,15 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
+    /**
+     * @desc Show home index view
+     * @route GET /
+     * @return \Illuminate\View\View
+     */
     public function index(): View
     {
         $jobs = Job::latest()
-            ->take(6)
+            ->limit(6)
             ->get();
 
         return view('pages.index')
